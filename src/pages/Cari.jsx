@@ -33,7 +33,7 @@ export default function Cari() {
     ) {
       return alert("Mohon dipilih Tipe Driver, Tanggal dan waktu jemput");
     }
-{/* dari sini filter untuk triger list cars*/}
+{/* dari sini filter untuk triger list*/}
     const data = await listCars((el) => {
       return inputData.capacity   
         ? el.capacity >= inputData.capacity
