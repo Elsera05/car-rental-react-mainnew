@@ -8,7 +8,7 @@ const populateCars = (cars) => {
   return cars.map((car) => {
     const isPositive = getRandomInt(0, 1) === 1;
     const timeAt = new Date();
-    const mutator = getRandomInt(1000000, 100000000);
+    const mutator = getRandomInt(1_000_000, 100_000_000);
     const availableAt = new Date(
       timeAt.getTime() + (isPositive ? mutator : -1 * mutator)
     );
@@ -24,10 +24,10 @@ const populateCars = (cars) => {
 };
 
 const listCars = async (filterer) => {
+  const cachedCarsString = localStorage.getItem("CARS");
   let cars;
-  let cachedCarsString = localStorage.getItem("CARS");
 
-  if (!cachedCarsString === null) {
+  if (cachedCarsString !== null) {
     const cacheCars = JSON.parse(cachedCarsString);
     cars = populateCars(cacheCars);
   } else {
@@ -36,11 +36,10 @@ const listCars = async (filterer) => {
     );
     const body = await response.json();
     cars = populateCars(body);
-
     localStorage.setItem("CARS", JSON.stringify(cars));
   }
 
-  if (filterer instanceof Function) return cars.filter(filterer);
+  if (typeof filterer === "function") return cars.filter(filterer); //gunain typeof untuk filterer
 
   return cars;
 };
