@@ -19,7 +19,7 @@ export default function Hero() {
                             <p className="mb-4">Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas terbaik
                                 dengan harga
                                 terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.</p>
-                            <Link to="/cari" className="btn btn-success">Mulai Sewa Mobil</Link>
+                            <Link to="/sewa" className="btn btn-success">Mulai Sewa Mobil</Link>
                         </div>
                     </div>
                     <div className="col-12 col-md-6">

@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
-import Cari from './pages/Cari';
+import Sewa from './pages/Cari';
 import Detail from './pages/Detail';
 ///tesss
 function App() {
@@ -9,8 +9,8 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/cari" element={<Cari />} />
-        <Route path="/cari/detail/:id" element={<Detail />} />
+        <Route path="/sewa" element={<Sewa />} />
+        <Route path="/sewa/detail/:id" element={<Detail />} />
 
       </Routes>
     </>

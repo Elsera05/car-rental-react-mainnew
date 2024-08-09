@@ -1,12 +1,24 @@
-import { useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 
 export default function Detail() {
   const params = useParams();
-  const cachedCars = localStorage.getItem('CARS')
-  const parsedCars = JSON.parse(cachedCars)
-  const [ data ] = useState(parsedCars.find(e => e.id == params.id))
+  const cachedCars = localStorage.getItem('CARS');
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    if (cachedCars) {
+      const parsedCars = JSON.parse(cachedCars);
+      const selectedCar = parsedCars.find(e => e.id === Number(params.id));
+      setData(selectedCar);
+    }
+  }, [params.id, cachedCars]);
+
+  if (!data) {
+    return <p>Data not found or loading...</p>;
+  }
+
   return (
     <>
       <Navigation />
@@ -14,7 +26,7 @@ export default function Detail() {
         <div className='container'>
           <div className='row flex-md-row-reverse'>
             <div className='col-12 col-md-3'>
-              <img src={data.image} alt={data.name}/>
+              <img src={data.image} alt={data.name} />
               <h4>{data.name}</h4>
               <span>{data.capacity - 2} - {data.capacity} orang</span>
               <h5>Total {data.price}</h5>
@@ -31,5 +43,5 @@ export default function Detail() {
       <footer>
       </footer>
     </>
-  )
+  );
 }
