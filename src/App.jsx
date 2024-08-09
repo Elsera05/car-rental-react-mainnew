@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
 import Cari from './pages/Cari';
 import Detail from './pages/Detail';
-
+///tesss
 function App() {
   return (
     <>
